@@ -48,8 +48,8 @@ class Renstra extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_skpd' => 'ID SKPD',
-            'id_periode' => 'ID Periode',
+            'id_skpd' => 'SKPD',
+            'id_periode' => 'Periode',
             'visi' => 'Visi',
         ];
     }

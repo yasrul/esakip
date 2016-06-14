@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Renstra;
-use app\models\search\RenstraSearch;
+use app\models\Misi;
+use app\models\search\MisiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RenstraController implements the CRUD actions for Renstra model.
+ * MisiController implements the CRUD actions for Misi model.
  */
-class RenstraController extends Controller
+class MisiController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class RenstraController extends Controller
     }
 
     /**
-     * Lists all Renstra models.
+     * Lists all Misi models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RenstraSearch();
+        $searchModel = new MisiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class RenstraController extends Controller
     }
 
     /**
-     * Displays a single Renstra model.
+     * Displays a single Misi model.
      * @param string $id
      * @return mixed
      */
@@ -57,20 +57,16 @@ class RenstraController extends Controller
     }
 
     /**
-     * Creates a new Renstra model.
+     * Creates a new Misi model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Renstra();
+        $model = new Misi();
 
-        if ($model->load(Yii::$app->request->post())) {
-            
-            $model->id = $model->id_skpd.$model->id_periode;
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -79,7 +75,7 @@ class RenstraController extends Controller
     }
 
     /**
-     * Updates an existing Renstra model.
+     * Updates an existing Misi model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -98,7 +94,7 @@ class RenstraController extends Controller
     }
 
     /**
-     * Deletes an existing Renstra model.
+     * Deletes an existing Misi model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -111,15 +107,15 @@ class RenstraController extends Controller
     }
 
     /**
-     * Finds the Renstra model based on its primary key value.
+     * Finds the Misi model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Renstra the loaded model
+     * @return Misi the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Renstra::findOne($id)) !== null) {
+        if (($model = Misi::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

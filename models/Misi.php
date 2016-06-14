@@ -8,10 +8,10 @@ use Yii;
  * This is the model class for table "misi".
  *
  * @property string $id
- * @property string $id_visi
+ * @property string $id_renstra
  * @property string $misi
  *
- * @property Visi $idVisi
+ * @property Renstra $idRenstra
  * @property Tujuan[] $tujuans
  */
 class Misi extends \yii\db\ActiveRecord
@@ -30,11 +30,11 @@ class Misi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'id_visi', 'misi'], 'required'],
+            [['id', 'id_renstra', 'misi'], 'required'],
             [['id'], 'string', 'max' => 6],
-            [['id_visi'], 'string', 'max' => 4],
+            [['id_renstra'], 'string', 'max' => 4],
             [['misi'], 'string', 'max' => 255],
-            [['id_visi'], 'exist', 'skipOnError' => true, 'targetClass' => Visi::className(), 'targetAttribute' => ['id_visi' => 'id']],
+            [['id_renstra'], 'exist', 'skipOnError' => true, 'targetClass' => Renstra::className(), 'targetAttribute' => ['id_renstra' => 'id']],
         ];
     }
 
@@ -45,7 +45,7 @@ class Misi extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_visi' => 'Id Visi',
+            'id_renstra' => 'Id Renstra',
             'misi' => 'Misi',
         ];
     }
@@ -53,9 +53,9 @@ class Misi extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdVisi()
+    public function getIdRenstra()
     {
-        return $this->hasOne(Visi::className(), ['id' => 'id_visi']);
+        return $this->hasOne(Renstra::className(), ['id' => 'id_renstra']);
     }
 
     /**

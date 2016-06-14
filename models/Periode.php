@@ -52,4 +52,8 @@ class Periode extends \yii\db\ActiveRecord
             return $list['tahun_awal'].'-'.$list['tahun_akhir'];
         });
     }
+    
+    public function getPeriode() {
+        return $this->tahun_awal.'-'.$this->tahun_akhir;
+    }
 }

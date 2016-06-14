@@ -5,23 +5,20 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Renstra;
+use app\models\Misi;
 
 /**
- * RenstraSearch represents the model behind the search form about `app\models\Renstra`.
+ * MisiSearch represents the model behind the search form about `app\models\Misi`.
  */
-class RenstraSearch extends Renstra
+class MisiSearch extends Misi
 {
-    public $skpd;
-    public $periode;
-    
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'skpd', 'periode', 'visi'], 'safe'],
+            [['id', 'id_renstra', 'misi'], 'safe'],
         ];
     }
 
@@ -43,8 +40,7 @@ class RenstraSearch extends Renstra
      */
     public function search($params)
     {
-        $query = Renstra::find();
-        $query->joinWith(['idSkpd','idPeriode']);
+        $query = Misi::find();
 
         // add conditions that should always apply here
 
@@ -59,14 +55,11 @@ class RenstraSearch extends Renstra
             // $query->where('0=1');
             return $dataProvider;
         }
-        
-        $query->andFilterWhere([
-            'periode.tahun_awal' => $this->periode,
-        ]);
+
         // grid filtering conditions
         $query->andFilterWhere(['like', 'id', $this->id])
-            ->andFilterWhere(['like', 'skpd.nama', $this->skpd])
-            ->andFilterWhere(['like', 'visi', $this->visi]);
+            ->andFilterWhere(['like', 'id_renstra', $this->id_renstra])
+            ->andFilterWhere(['like', 'misi', $this->misi]);
 
         return $dataProvider;
     }
