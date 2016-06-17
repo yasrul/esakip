@@ -46,6 +46,12 @@ use app\models\Periode;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn', 'header'=>'No', 'contentOptions' => ['style' => 'width:5%']],
                 ['attribute'=>'misi', 'contentOptions' => ['style' => 'width:95%']],
+                [
+                    'class' => yii\grid\ActionColumn::className(),
+                    'controller' => 'misi',
+                    'header' => Html::a('<i class="glyphicon glyphicon-plus"></i>&nbsp;Add New', ['misi/create']),
+                    'template' => '{update}{delete}'
+                ],
             ]
         ]); ?>
     <?php endif ?>
