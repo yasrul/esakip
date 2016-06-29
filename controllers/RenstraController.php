@@ -86,6 +86,8 @@ class RenstraController extends Controller
      */
     public function actionUpdate($id)
     {
+        Yii::$app->user->returnUrl = Yii::$app->request->url;
+        
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

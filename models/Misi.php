@@ -65,4 +65,10 @@ class Misi extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Tujuan::className(), ['id_misi' => 'id']);
     }
+    
+    public static function getMaxid($relation_id) {
+        $q = 'select MAX(id) from misi where id_renstra='.$relation_id;
+        $cmd = \Yii::$app->db->createCommand($q);
+        return $cmd->queryScalar();
+    }
 }

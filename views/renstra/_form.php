@@ -49,7 +49,7 @@ use app\models\Periode;
                 [
                     'class' => yii\grid\ActionColumn::className(),
                     'controller' => 'misi',
-                    'header' => Html::a('<i class="glyphicon glyphicon-plus"></i>&nbsp;Add New', ['misi/create']),
+                    'header' => Html::a('<i class="glyphicon glyphicon-plus"></i>&nbsp;Add New', ['misi/create', 'relation_id' => $model->id]),
                     'template' => '{update}{delete}'
                 ],
             ]

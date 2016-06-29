@@ -65,9 +65,16 @@ class MisiController extends Controller
     {
         $model = new Misi();
         $model->id_renstra = $relation_id;
+        $maxId = Misi::getMaxid($relation_id);
+        if ($maxId == NULL) {
+            $maxId = 1;
+        }else $maxId = substr($maxId, 4, 2)+1;
+        
+        $model->id = $model->id_renstra.sprintf("%02d", $maxId);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            return $this->goBack();
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -86,7 +93,8 @@ class MisiController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            return $this->goBack();
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -104,7 +112,8 @@ class MisiController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        //return $this->redirect(['index']);
+        return $this->goBack();
     }
 
     /**
