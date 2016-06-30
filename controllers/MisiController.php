@@ -65,10 +65,11 @@ class MisiController extends Controller
     {
         $model = new Misi();
         $model->id_renstra = $relation_id;
+        
         $maxId = Misi::getMaxid($relation_id);
         if ($maxId == NULL) {
-            $maxId = 1;
-        }else $maxId = substr($maxId, 4, 2)+1;
+            $maxId = 1; 
+        } else $maxId = substr($maxId, 4, 2)+1;
         
         $model->id = $model->id_renstra.sprintf("%02d", $maxId);
 

@@ -67,8 +67,9 @@ class Misi extends \yii\db\ActiveRecord
     }
     
     public static function getMaxid($relation_id) {
-        $q = 'select MAX(id) from misi where id_renstra='.$relation_id;
+        $q = 'select MAX(id) from misi where id_renstra = :idRenstra';
         $cmd = \Yii::$app->db->createCommand($q);
+        $cmd->bindValue(':idRenstra', $relation_id, \PDO::PARAM_STR);
         return $cmd->queryScalar();
     }
 }

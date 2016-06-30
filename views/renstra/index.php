@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute' => 'periode', 'value' => 'idPeriode.periode'],
             'visi',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn','template' => '{update}{delete}'],
         ],
     ]); ?>
 </div>
