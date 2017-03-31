@@ -7,6 +7,7 @@ use yii\grid\GridView;
 use yii\data\ActiveDataProvider;
 use app\models\Skpd;
 use app\models\Periode;
+use app\models\Tujuan;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Renstra */
@@ -54,6 +55,13 @@ use app\models\Periode;
                 ],
             ]
         ]); ?>
+    <!--    
+    <?= GridView::widget([
+            'dataProvider' => new ActiveDataProvider([
+                'query' => Tujuan::find()->with('misis.')
+            ])
+        ])
+    ?>-->
     <?php endif ?>
 
     <div class="form-group">
